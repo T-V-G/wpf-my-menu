@@ -1,0 +1,69 @@
+﻿<Window x:Class="wpf_my_menu.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpf_my_menu"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="MainWindow" Height="700" Width="900"
+        Background="{x:Null}"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+
+    <materialDesign:Card UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" Margin="25" >
+        
+        <materialDesign:Card.ContextMenu>
+            <ContextMenu KeyDown="GlobalShortCut" >
+                <MenuItem x:Name="ContextMessageItem" Header="Message" InputGestureText="Ctrl+M"  Click="messageClick">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="Message"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="ContextCheckItem" Header="Check" InputGestureText="Ctrl+C" IsCheckable="True" IsChecked="False"  Checked="CheckContext_Click" Unchecked="UncheckContext_Click"  />
+                <Separator/>
+                <MenuItem x:Name="ContextExitItem" Header="Exit" InputGestureText="Ctrl+E" Click="exitClick">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="ExitToApp"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </ContextMenu>
+        </materialDesign:Card.ContextMenu>
+        
+        <Grid HorizontalAlignment="Center" Margin="0,10,0,10" Width="850">
+            <Menu x:Name="MainMenu"  Height="46" VerticalAlignment="Top" Margin="10,0,651,0" KeyDown="GlobalShortCut">
+                <MenuItem Header="File" StaysOpenOnClick="True" VerticalAlignment="Center" >
+                    <MenuItem x:Name="messageMenuItem" Header="Message" InputGestureText="Ctrl+M"  Click="messageClick">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="Message"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="checkMenuItem" Header="Check" InputGestureText="Ctrl+C" IsCheckable="True" IsChecked="False"  Checked="Check_Click" Unchecked="Uncheck_Click">
+                       
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem x:Name="Exit" Header="Exit" InputGestureText="Ctrl+E"  Click="exitClick">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="ExitToApp"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem x:Name="sizeMenuItem" Header="Size" StaysOpenOnClick="True"  VerticalAlignment="Center" KeyDown="sizeClick">
+                </MenuItem>
+                <MenuItem Header="Help" StaysOpenOnClick="True" VerticalAlignment="Center" KeyDown="AboutShortCut">
+                    <MenuItem Header="About" InputGestureText="Ctrl+A" Click="aboutClick">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="QuestionMark"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                
+
+
+            </Menu>
+           
+        </Grid>
+    </materialDesign:Card>
+</Window>
